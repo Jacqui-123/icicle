@@ -1,14 +1,4 @@
 
-
-
-#' Calculate total continuous ice cover
-#'
-#' @param data
-#'
-#' @return A dataframe with length of ice coverage per year
-#' @export
-#'
-#' @examples
 ice_group_1 <- function(data) {
 
   lst <- list()
