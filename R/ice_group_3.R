@@ -1,3 +1,5 @@
+#' @importFrom magrittr %>%
+NULL
 
 #' Calculate onset of freshet
 #'
@@ -65,7 +67,7 @@ ice_group_3 <- function(data) {
         flow_lst[[i]] <- fl
         stn_nu[[i]] <- st
         doy_lst[[i]] <- doy
-        Freshet_Date <- as.Date(unlist(date_lst))
+        Freshet_Date <- lubridate::as_date(unlist(date_lst))
         Freshet_Flow <- unlist(flow_lst)
         Station_Number <- unlist(stn_nu)
         Freshet_Dayofyear <- unlist(doy_lst)

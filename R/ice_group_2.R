@@ -56,8 +56,8 @@ ice_group_2 <- function(data) {
 
   }
 
-  Freeze_Date <- as.Date(unlist(start_date_lst))
-  Thaw_Date <- as.Date(unlist(end_date_lst))
+  Freeze_Date <- lubridate::as_date(unlist(start_date_lst))
+  Thaw_Date <- lubridate::as_date(unlist(end_date_lst))
   Flow_Freeze <- unlist(start_flow_lst)
   Flow_Thaw <- unlist(end_flow_lst)
   Freeze_DOY <-unlist(start_doy_lst)
@@ -65,7 +65,6 @@ ice_group_2 <- function(data) {
 
   df <- cbind.data.frame(Freeze_Date,Freeze_DOY,Flow_Freeze,Thaw_Date,Thaw_DOY, Flow_Thaw)
 
-  Ice_coverage_dates_flow <- tibble::rownames_to_column(df, "waterYear")
   Ice_coverage_dates_flow <- tibble::rownames_to_column(df, "waterYear")
   return(Ice_coverage_dates_flow)
 
