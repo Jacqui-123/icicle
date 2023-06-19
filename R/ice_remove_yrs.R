@@ -2,7 +2,7 @@
 
 #' Remove years with more than 14 consecutive NA values for flow
 #'
-#' @param data
+#' @param data A data frame
 #'
 #' @return  Data frame without years that have 14 or more NA values for flow
 #' @export

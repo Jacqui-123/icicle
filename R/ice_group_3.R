@@ -1,4 +1,12 @@
 
+#' Calculate onset of freshet
+#'
+#' @param data A data frame used to calculate onset of freshet
+#'
+#' @return A data frame with the onset of freshet dates, flow values and day of the year.
+#' @export
+#'
+#' @examples
 ice_group_3 <- function(data) {
   index <- 0
   f_index <- 16
@@ -23,17 +31,14 @@ ice_group_3 <- function(data) {
 
     #calc rolling 16 day mean
     rollmn <- zoo::rollmean(df_subset$Value, k = 16, width = 16)
-=======
-      mutate(Date = as.Date(Date)) %>%
+      dplyr::mutate(Date = as.Date(Date)) %>%
       #filter(month(Date) %in% c(3,4,5,6))
-      mutate(new_col = format(Date,"%m-%d")) %>%
-      filter(month(Date) >= 2 & month(Date) < 7) %>%
-      filter(!(new_col %in% c("02-01", "02-02", "02-03", "02-04", "02-05", "02-06", "02-07", "02-08", "02-09", "02-10", "02-11")))
+      dplyr::mutate(new_col = format(Date,"%m-%d")) %>%
+      dplyr::filter(month(Date) >= 2 & month(Date) < 7) %>%
+      dplyr::filter(!(new_col %in% c("02-01", "02-02", "02-03", "02-04", "02-05", "02-06", "02-07", "02-08", "02-09", "02-10", "02-11")))
 
     #calc rolling 16 day mean
     rollmn <- rollmean(df_subset$Value, k = 16, width = 16)
->>>>>>> d3beb63a152efc9afea5538038867a4f7c191bf9
-    #rollmn <- as.data.frame(rollmn)
 
     for (j in rollmn) { #second loop
       #increment index

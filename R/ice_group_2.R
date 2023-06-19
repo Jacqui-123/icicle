@@ -1,4 +1,12 @@
 
+#' Calculate freeze and thaw dates
+#'
+#' @param data data frame used to calculate freeze and thaw dates
+#'
+#' @return A data frame
+#' @export
+#'
+#' @examples
 ice_group_2 <- function(data) {
 
   start_date_lst <- list()
