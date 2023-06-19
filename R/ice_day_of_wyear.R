@@ -1,14 +1,11 @@
 
-
-#' Calculate day of the water year
-#'
-#' @param data
-#'
-#' @return A column on the data frame with the day of the water year added
-#' @export
-#'
-#' @examples
 ice_day_of_wyear <- function(data){
+
+  #DAY OF THE WATER YEAR FUNCTION
+#Date should be in yyyy-mm-dd
+
+ice_day_of_wyear <- function(data){
+  #function sequences by number of days in each water year
 
   df <- data.frame(waterYear = character(), sequence = character())
 
