@@ -26,7 +26,7 @@ ice_group_3 <- function(data) {
       dplyr::mutate(Date = as.Date(Date)) %>%
       #filter(month(Date) %in% c(3,4,5,6))
       dplyr::mutate(new_col = format(Date,"%m-%d")) %>%
-      dplyr::filter(month(Date) >= 2 & month(Date) < 7) %>%
+      dplyr::filter(lubridate::month(Date) >= 2 & lubridate::month(Date) < 7) %>%
       dplyr::filter(!(new_col %in% c("02-01", "02-02", "02-03", "02-04", "02-05", "02-06", "02-07", "02-08", "02-09", "02-10", "02-11")))
 
     #calc rolling 16 day mean
@@ -34,11 +34,11 @@ ice_group_3 <- function(data) {
       dplyr::mutate(Date = as.Date(Date)) %>%
       #filter(month(Date) %in% c(3,4,5,6))
       dplyr::mutate(new_col = format(Date,"%m-%d")) %>%
-      dplyr::filter(month(Date) >= 2 & month(Date) < 7) %>%
+      dplyr::filter(lubridate::month(Date) >= 2 & lubridate::month(Date) < 7) %>%
       dplyr::filter(!(new_col %in% c("02-01", "02-02", "02-03", "02-04", "02-05", "02-06", "02-07", "02-08", "02-09", "02-10", "02-11")))
 
     #calc rolling 16 day mean
-    rollmn <- rollmean(df_subset$Value, k = 16, width = 16)
+    rollmn <- zoo::rollmean(df_subset$Value, k = 16, width = 16)
 
     for (j in rollmn) { #second loop
       #increment index
@@ -79,7 +79,7 @@ ice_group_3 <- function(data) {
 
   Freshet_dates_flow <- tibble::rownames_to_column(df, "waterYear")
 
-  Freshet_dates_flow <- rownames_to_column(df, "waterYear")
+  Freshet_dates_flow <- tibble::rownames_to_column(df, "waterYear")
 
   return(Freshet_dates_flow)
 }

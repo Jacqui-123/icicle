@@ -66,7 +66,7 @@ ice_group_2 <- function(data) {
   df <- cbind.data.frame(Freeze_Date,Freeze_DOY,Flow_Freeze,Thaw_Date,Thaw_DOY, Flow_Thaw)
 
   Ice_coverage_dates_flow <- tibble::rownames_to_column(df, "waterYear")
-  Ice_coverage_dates_flow <- rownames_to_column(df, "waterYear")
+  Ice_coverage_dates_flow <- tibble::rownames_to_column(df, "waterYear")
   return(Ice_coverage_dates_flow)
 
 }
