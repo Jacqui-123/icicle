@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of icicle is to calculate and tidy ice cycle variables from flow data collected by the Water Survey of Canada. This package provides a set of functions that calculate the freeze/thaw dates, onset of freshet, and length of continuous ice coverage for each year. Additional tidying functions remove years from the dataframe with consecutive NA values, and add a column of "day of the year", or Julian dates. 
+The goal of icicle is to calculate and tidy ice cycle variables from flow data collected by the Water Survey of Canada. This package provides a set of functions that calculate the freeze/thaw dates, onset of freshet, and length of continuous ice coverage for each year. Additional tidying functions remove years from the dataframe with consecutive NA values, and add a column for "day of the year". 
 
 ## Installation
 
@@ -36,16 +36,74 @@ devtools::install_github("Jacqui-123/icicle")
 
 This is a basic example of how you might use the functions in this package:
 
-```{r example}
+```{r ex1}
+
 library(icicle)
-## tbd example 
+#import data from tidyhydat using tidyhydat::hy_daily_flows()
+#here we use a prepared test data file
+data_example <- read.csv("testdata.csv")
+
 ```
 
+Add a Julian date, or "day of the year" to the data frame 
+```{r ex2}
+library(icicle)
+#add a day of the year
+data_doy <- ice_day_of_wyear(data_example)
+```
+
+
+```{r, echo= FALSE}
+library(knitr)
+kable(data_doy[1:6,], caption = " ") 
+
+```
+
+Calculate the length of continuous ice coverage using the "B" dates marked on the Water Survey of Canada's database 
+```{r ex3, warning=FALSE, message = FALSE}
+library(icicle)
+library(tidyverse)
+
+#tidy and format data
+data_doy <- data_doy %>%
+  dplyr::mutate(waterYear = as.character(waterYear)) %>%
+  dplyr::mutate(Date = as.Date(Date)) 
+
+results_g1 <- ice_group_1(data_doy)
+```
+
+
+```{r, echo = FALSE}
+library(knitr)
+kable(results_g1[1:3,], caption = " ") 
+
+```
+
+Plot the results of ice coverage for each year
+```{r, echo= FALSE}
+
+plot(results_g1)
+
+```
+
+Calculate the freeze and thaw dates for each year using the onset of continuous "B" dates 
+
+```{r ex5}
+library(icicle)
+results_g2 <- ice_group_2(data_doy)
+```
+
+
+```{r , echo = FALSE}
+library(knitr)
+kable(results_g2[7:9,], caption = " ") 
+
+```
+```
 
 ```{r, include=FALSE, echo = FALSE, warning = FALSE}
 
 #You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
-
 
 #In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
 
