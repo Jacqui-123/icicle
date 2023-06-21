@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-NOTE: This package is under development, and a few functions are undergoing a re-write. Additionally, more complete documentation and test cases are in progress.
+NOTE: This package is under development, and a few functions are undergoing a re-write. More complete documentation and test cases are in progress.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -36,53 +36,53 @@ devtools::install_github("Jacqui-123/icicle")
 
 This is a basic example of how you might use the functions in this package:
 
-```{r ex1}
-
-library(icicle)
-#import data from tidyhydat using tidyhydat::hy_daily_flows()
-#here we use a prepared test data file
+```{r, ex1}
+#import data for a water station from the Water Survey of Canada using tidyhydat::hy_daily_flows()
+#here we use a test data file:
 data_example <- read.csv("testdata.csv")
 
 ```
 
-Add a Julian date, or "day of the year" to the data frame 
+Add a Julian date, or "day of the year" column to the data frame 
 ```{r ex2}
-library(icicle)
-#add a day of the year
-data_doy <- ice_day_of_wyear(data_example)
+data_doy <- icicle::ice_day_of_wyear(data_example)
 ```
 
 
 ```{r, echo= FALSE}
 library(knitr)
-kable(data_doy[1:6,], caption = " ") 
+kable(data_doy[1:4,], caption = " ") 
 
 ```
 
 Calculate the length of continuous ice coverage using the "B" dates marked on the Water Survey of Canada's database 
-```{r ex3, warning=FALSE, message = FALSE}
-library(icicle)
-library(tidyverse)
 
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
 #tidy and format data
+library(tidyverse)
 data_doy <- data_doy %>%
   dplyr::mutate(waterYear = as.character(waterYear)) %>%
   dplyr::mutate(Date = as.Date(Date)) 
 
+```
+
+```{r ex3, warning=FALSE, message = FALSE, fig.align='center'}
+library(icicle)
 results_g1 <- ice_group_1(data_doy)
 ```
 
 
 ```{r, echo = FALSE}
 library(knitr)
-kable(results_g1[1:3,], caption = " ") 
+results_1 <- results_g1 %>% filter("Year" != "2021")
+kable(results_g1[1:4,], title = "Ice Coverage Results") 
 
 ```
 
-Plot the results of ice coverage for each year
-```{r, echo= FALSE}
-
-plot(results_g1)
+```{r explot, echo = FALSE}
+#Plot the results of ice coverage for each year
+plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
+   cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
 
 ```
 
@@ -96,7 +96,7 @@ results_g2 <- ice_group_2(data_doy)
 
 ```{r , echo = FALSE}
 library(knitr)
-kable(results_g2[7:9,], caption = " ") 
+kable(results_g2[7:9,], title = "Results Table for Freeze and Thaw Dates") 
 
 ```
 ```

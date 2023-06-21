@@ -1,7 +1,7 @@
 
 NOTE: This package is under development, and a few functions are
-undergoing a re-write. Additionally, more complete documentation and
-test cases are in progress.
+undergoing a re-write. More complete documentation and test cases are in
+progress.
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -33,19 +33,15 @@ This is a basic example of how you might use the functions in this
 package:
 
 ``` r
-
-library(icicle)
-#import data from tidyhydat using tidyhydat::hy_daily_flows()
-#here we use a prepared test data file
+#import data for a water station from the Water Survey of Canada using tidyhydat::hy_daily_flows()
+#here we use a test data file:
 data_example <- read.csv("testdata.csv")
 ```
 
-Add a Julian date, or “day of the year” to the data frame
+Add a Julian date, or “day of the year” column to the data frame
 
 ``` r
-library(icicle)
-#add a day of the year
-data_doy <- ice_day_of_wyear(data_example)
+data_doy <- icicle::ice_day_of_wyear(data_example)
 ```
 
 | Date      | waterYear | STATION_NUMBER | Parameter | Value | Symbol | day_of_year |
@@ -54,21 +50,12 @@ data_doy <- ice_day_of_wyear(data_example)
 | 10/2/1960 |      1961 | 07HA001        | Flow      |  1080 | NA     |           2 |
 | 10/3/1960 |      1961 | 07HA001        | Flow      |  1030 | E      |           3 |
 | 10/4/1960 |      1961 | 07HA001        | Flow      |   980 | NA     |           4 |
-| 10/5/1960 |      1961 | 07HA001        | Flow      |   957 | NA     |           5 |
-| 10/6/1960 |      1961 | 07HA001        | Flow      |   895 | NA     |           6 |
 
 Calculate the length of continuous ice coverage using the “B” dates
 marked on the Water Survey of Canada’s database
 
 ``` r
 library(icicle)
-library(tidyverse)
-
-#tidy and format data
-data_doy <- data_doy %>%
-  dplyr::mutate(waterYear = as.character(waterYear)) %>%
-  dplyr::mutate(Date = as.Date(Date)) 
-
 results_g1 <- ice_group_1(data_doy)
 ```
 
@@ -77,9 +64,9 @@ results_g1 <- ice_group_1(data_doy)
 | 1961 |          164 |
 | 1962 |          176 |
 | 1963 |          167 |
+| 1964 |          173 |
 
-Plot the results of ice coverage for each year
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-explot-1.png" width="100%" />
 
 Calculate the freeze and thaw dates for each year using the onset of
 continuous “B” dates
