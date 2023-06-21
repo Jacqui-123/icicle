@@ -12,8 +12,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
-)
+  out.width = "100%")
 ```
 
 # icicle
@@ -83,11 +82,12 @@ kable(results_g1[1:4,], title = "Ice Coverage Results")
 
 ```
 
-```{r explot, echo= FALSE}
+```{r, echo= FALSE, warning=FALSE}
 #Plot the results of ice coverage for each year
 #plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
  #  cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
 library(ggplot2)
+library(caTools)
 data <- results_g1 %>% filter(Year != "2021")
 ggplot(data, aes(x=Year, y=Ice_coverage)) +
     geom_point(col= "blue") +     # Use hollow circles

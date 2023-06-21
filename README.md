@@ -73,7 +73,7 @@ results_g1 <- ice_group_1(data_doy)
 | 1963 |          167 |
 | 1964 |          173 |
 
-<img src="man/figures/README-explot-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 Calculate the freeze and thaw dates for each year using the onset of
 continuous “B” dates
