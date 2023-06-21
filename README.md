@@ -73,12 +73,6 @@ results_g1 <- ice_group_1(data_doy)
 | 1963 |          167 |
 | 1964 |          173 |
 
-``` r
-#Plot the results of ice coverage for each year
-plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
-   cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
-```
-
 <img src="man/figures/README-explot-1.png" width="100%" />
 
 Calculate the freeze and thaw dates for each year using the onset of

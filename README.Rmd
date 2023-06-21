@@ -83,10 +83,18 @@ kable(results_g1[1:4,], title = "Ice Coverage Results")
 
 ```
 
-```{r explot}
+```{r explot, echo= FALSE}
 #Plot the results of ice coverage for each year
-plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
-   cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
+#plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
+ #  cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
+library(ggplot2)
+data <- results_g1 %>% filter(Year != "2021")
+ggplot(data, aes(x=Year, y=Ice_coverage)) +
+    geom_point(col= "blue") +     # Use hollow circles
+  scale_x_discrete(breaks = seq(1960, 2020, 10)) +
+  ylim(40, 200)+
+  theme_bw() 
+
 
 ```
 
