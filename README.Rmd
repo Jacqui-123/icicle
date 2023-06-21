@@ -43,11 +43,15 @@ data_example <- read.csv("testdata.csv")
 
 ```
 
+```{r, echo= FALSE}
+library(knitr)
+kable(data_example[1:4,], caption = " ") 
+```
+
 Add a Julian date, or "day of the year" column to the data frame 
 ```{r ex2}
 data_doy <- icicle::ice_day_of_wyear(data_example)
 ```
-
 
 ```{r, echo= FALSE}
 library(knitr)
@@ -79,7 +83,7 @@ kable(results_g1[1:4,], title = "Ice Coverage Results")
 
 ```
 
-```{r explot, echo = FALSE}
+```{r explot}
 #Plot the results of ice coverage for each year
 plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
    cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")

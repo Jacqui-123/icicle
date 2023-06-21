@@ -38,6 +38,13 @@ package:
 data_example <- read.csv("testdata.csv")
 ```
 
+| Date      | waterYear | STATION_NUMBER | Parameter | Value | Symbol |
+|:----------|----------:|:---------------|:----------|------:|:-------|
+| 10/1/1960 |      1961 | 07HA001        | Flow      |  1140 | NA     |
+| 10/2/1960 |      1961 | 07HA001        | Flow      |  1080 | NA     |
+| 10/3/1960 |      1961 | 07HA001        | Flow      |  1030 | E      |
+| 10/4/1960 |      1961 | 07HA001        | Flow      |   980 | NA     |
+
 Add a Julian date, or “day of the year” column to the data frame
 
 ``` r
@@ -65,6 +72,12 @@ results_g1 <- ice_group_1(data_doy)
 | 1962 |          176 |
 | 1963 |          167 |
 | 1964 |          173 |
+
+``` r
+#Plot the results of ice coverage for each year
+plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
+   cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
+```
 
 <img src="man/figures/README-explot-1.png" width="100%" />
 
