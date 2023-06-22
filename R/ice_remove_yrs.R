@@ -1,10 +1,13 @@
 
 
-#' Remove years with more than 14 consecutive NA values for flow
+#' Remove years with more than x consecutive NA values for flow
 #'
 #' @param data A data frame
+#' @param value_column column of flow values in the dataframe
+#' @param year_column column of year values in the dataframe
+#' @param consecutive_nas non-zero integer
 #'
-#' @return  Data frame without years that have 14 or more NA values for flow
+#' @return  Data frame with the year(s) removed that have x or more consecutive NA values for flow
 #' @export
 #'
 #' @examples

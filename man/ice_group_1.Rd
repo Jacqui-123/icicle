@@ -7,10 +7,12 @@
 ice_group_1(data, year_column = "waterYear")
 }
 \arguments{
-\item{data}{data frame used to calculate ice cover}
+\item{data}{input data used to calculate the ice variables}
+
+\item{year_column}{column of year values in the dataframe}
 }
 \value{
-A data frame.
+A data frame with days of continuous ice coverage for each year
 }
 \description{
 Calculate total continuous ice coverage per year

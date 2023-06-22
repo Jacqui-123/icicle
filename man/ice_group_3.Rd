@@ -7,10 +7,10 @@
 ice_group_3(data)
 }
 \arguments{
-\item{data}{A data frame used to calculate onset of freshet}
+\item{data}{input dataframe used to calculate the onset of freshet}
 }
 \value{
-A data frame with the onset of freshet dates, flow values and day of the year.
+A data frame with the date, flow value and day of the year for the onset of freshet dates for each year
 }
 \description{
 Calculate onset of freshet

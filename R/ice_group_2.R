@@ -1,9 +1,14 @@
 
 #' Calculate freeze and thaw dates
 #'
-#' @param data data frame used to calculate freeze and thaw dates
+#' @param data input data used to calculate the freeze and thaw dates
+#' @param year_column column of year values in the dataframe
+#' @param value_column column of flow values in the dataframe
+#' @param symbol_column column of symbol values in the dataframe
+#' @param date_column column of daily date values in the dataframe
+#' @param day_of_yr_column column of day of the year in the dataframe
 #'
-#' @return A data frame
+#' @return A data frame with freeze and thaw dates for each year
 #' @export
 #'
 #' @examples

@@ -81,17 +81,20 @@ results_1 <- results_g1 %>% filter("Year" != "2021")
 kable(results_g1[1:4,], title = "Ice Coverage Results") 
 
 ```
+Plot the length of continuous ice coverage per year to visualize change over time
 
 ```{r, echo= FALSE, warning=FALSE}
 #Plot the results of ice coverage for each year
 #plot(x= results_g1$Year, y = results_g1$Ice_coverage, pch = 16,
  #  cex = 1.0, xlab = "Year", ylab = "Days of Continuous Ice Cover")
 library(ggplot2)
+library(tidyverse)
 library(caTools)
 data <- results_g1 %>% filter(Year != "2021")
 ggplot(data, aes(x=Year, y=Ice_coverage)) +
     geom_point(col= "blue") +     # Use hollow circles
   scale_x_discrete(breaks = seq(1960, 2020, 10)) +
+  ylab("Days of continuous ice coverage") +
   ylim(40, 200)+
   theme_bw() 
 

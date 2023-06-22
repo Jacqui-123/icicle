@@ -3,7 +3,8 @@
 
 #' Calculate the day of the water year
 #'
-#' @param data Data frame used to calculate the day of water year
+#' @param  Data data frame used to calculate the day of the year
+#' @param  year_column column of year values in the dataframe
 #'
 #' @return A data frame
 #' @export

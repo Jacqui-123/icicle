@@ -2,7 +2,7 @@
 % Please edit documentation in R/ice_remove_yrs.R
 \name{ice_remove_yrs}
 \alias{ice_remove_yrs}
-\title{Remove years with more than 14 consecutive NA values for flow}
+\title{Remove years with more than x consecutive NA values for flow}
 \usage{
 ice_remove_yrs(
   data,
@@ -13,10 +13,16 @@ ice_remove_yrs(
 }
 \arguments{
 \item{data}{A data frame}
+
+\item{value_column}{column of flow values in the dataframe}
+
+\item{year_column}{column of year values in the dataframe}
+
+\item{consecutive_nas}{non-zero integer}
 }
 \value{
-Data frame without years that have 14 or more NA values for flow
+Data frame with the year(s) removed that have x or more consecutive NA values for flow
 }
 \description{
-Remove years with more than 14 consecutive NA values for flow
+Remove years with more than x consecutive NA values for flow
 }

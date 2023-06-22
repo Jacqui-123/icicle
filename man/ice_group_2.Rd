@@ -14,10 +14,20 @@ ice_group_2(
 )
 }
 \arguments{
-\item{data}{data frame used to calculate freeze and thaw dates}
+\item{data}{input data used to calculate the freeze and thaw dates}
+
+\item{year_column}{column of year values in the dataframe}
+
+\item{value_column}{column of flow values in the dataframe}
+
+\item{symbol_column}{column of symbol values in the dataframe}
+
+\item{date_column}{column of daily date values in the dataframe}
+
+\item{day_of_yr_column}{column of day of the year in the dataframe}
 }
 \value{
-A data frame
+A data frame with freeze and thaw dates for each year
 }
 \description{
 Calculate freeze and thaw dates

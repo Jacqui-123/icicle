@@ -7,7 +7,9 @@
 ice_day_of_wyear(data, year_column = "waterYear")
 }
 \arguments{
-\item{data}{Data frame used to calculate the day of water year}
+\item{year_column}{column of year values in the dataframe}
+
+\item{Data}{data frame used to calculate the day of the year}
 }
 \value{
 A data frame

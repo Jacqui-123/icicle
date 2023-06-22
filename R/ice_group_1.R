@@ -1,9 +1,10 @@
 
 #' Calculate total continuous ice coverage per year
 #'
-#' @param data data frame used to calculate ice cover
+#' @param data input data used to calculate the ice variables
+#' @param year_column column of year values in the dataframe
 #'
-#' @return A data frame.
+#' @return A data frame with days of continuous ice coverage for each year
 #' @export
 #'
 #' @examples

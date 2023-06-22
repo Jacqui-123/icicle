@@ -73,6 +73,9 @@ results_g1 <- ice_group_1(data_doy)
 | 1963 |          167 |
 | 1964 |          173 |
 
+Plot the length of continuous ice coverage per year to visualize change
+over time
+
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 Calculate the freeze and thaw dates for each year using the onset of

@@ -5,9 +5,9 @@ Date <- NULL
 
 #' Calculate onset of freshet
 #'
-#' @param data A data frame used to calculate onset of freshet
+#' @param data input dataframe used to calculate the onset of freshet
 #'
-#' @return A data frame with the onset of freshet dates, flow values and day of the year.
+#' @return A data frame with the date, flow value and day of the year for the onset of freshet dates for each year
 #' @export
 #'
 #' @examples
