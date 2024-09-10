@@ -12,6 +12,7 @@
 #' @examples
 ice_day_of_wyear <- function(data, year_column = "waterYear"){
   #function sequences by number of days in each water year
+  #not sure if this is better than "calc_day_of_wyear..."
   df <- data.frame()
   for (i in unique({{data}}[[year_column]])) {
     df_subset <- {{data}}[{{data}}[[year_column]] == i, ]
